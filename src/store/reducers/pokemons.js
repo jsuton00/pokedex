@@ -1,15 +1,19 @@
+import { SORT_OPTIONS } from '../../constants/options';
 import {
 	FETCH_POKEMONS_FAIL,
 	FETCH_POKEMONS_SUCCESS,
 	LOADING_POKEMONS,
 	SEARCH_POKEMONS,
 	SET_SEARCH_TERM,
+	SET_SORT_OPTION,
 } from '../actions/actionTypes';
 
 const initialState = {
 	pokemons: [],
 	pokemon: '',
 	searchTerm: '',
+	sortOption: '',
+	sortOptions: SORT_OPTIONS,
 	loadingPokemons: false,
 	errorPokemons: false,
 };
@@ -36,6 +40,8 @@ const pokemons = (state = initialState, action) => {
 				pokemons: action.pokemons,
 				searchTerm: action.searchTerm,
 			};
+		case SET_SORT_OPTION:
+			return { ...state, sortOption: action.sortOption };
 		case LOADING_POKEMONS:
 			return { ...state, loadingPokemons: true };
 		default:

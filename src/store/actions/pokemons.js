@@ -6,6 +6,7 @@ import {
 	LOADING_POKEMONS,
 	SEARCH_POKEMONS,
 	SET_SEARCH_TERM,
+	SET_SORT_OPTION,
 } from './actionTypes';
 
 export const getPokemons = () => async (dispatch) => {
@@ -36,4 +37,8 @@ export const searchPokemons = (searchTerm) => (dispatch, getState) => {
 		pokemons: searchResults.length > 0 && searchResults,
 		searchTerm: searchTerm,
 	});
+};
+
+export const setSortOption = (sortOption) => (dispatch) => {
+	dispatch({ type: SET_SORT_OPTION, sortOption: sortOption });
 };

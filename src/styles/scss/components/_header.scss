@@ -18,6 +18,11 @@
 		&-link {
 			color: $white;
 			font-weight: $nunito-bold;
+
+			&:hover,
+			&:active {
+				color: $white;
+			}
 		}
 	}
 	&-search-bar {
