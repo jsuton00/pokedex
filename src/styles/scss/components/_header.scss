@@ -1,0 +1,29 @@
+.header {
+	width: 100%;
+	height: 3.5rem;
+	padding: $spacing-xxs 0;
+	border: $spacing-primary solid $crimsonRed;
+	background: $crimsonRed;
+	&-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+	&-brand {
+		width: 15%;
+		text-align: center;
+
+		&-link {
+			color: $white;
+			font-weight: $nunito-bold;
+		}
+	}
+	&-search-bar {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		width: 35%;
+	}
+}

@@ -1,0 +1,14 @@
+//Base
+@import './base/typography';
+@import './base/colours';
+@import './base/settings';
+@import './base/resets';
+@import './base/app';
+
+//Components
+@import './components/header';
+@import './components/search-bar';
+@import './components/pokemons';
+
+//Pages
+@import './pages/home-page';

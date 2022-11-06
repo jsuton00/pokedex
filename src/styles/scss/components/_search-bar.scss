@@ -1,0 +1,41 @@
+.search {
+	&-form {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	&-input {
+		border: $spacing-primary solid $whitesmoke;
+		background: $whitesmoke;
+		border-radius: $spacing-sm;
+
+		width: 100%;
+		padding: $spacing-xxs $spacing-xxl + 0.125rem;
+
+		&::-webkit-input-placeholder {
+			font-weight: $nunito-semibold;
+		}
+
+		&::-moz-placeholder {
+			font-weight: $nunito-semibold;
+		}
+
+		&:-ms-input-placeholder {
+			font-weight: $nunito-semibold;
+		}
+
+		&::-ms-input-placeholder {
+			font-weight: $nunito-semibold;
+		}
+
+		&::placeholder {
+			font-weight: $nunito-semibold;
+		}
+	}
+	&-icon {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: $spacing-xs $spacing-md;
+	}
+}

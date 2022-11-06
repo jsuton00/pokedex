@@ -1,0 +1,199 @@
+.pokemons {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+	grid-template-rows: auto;
+	justify-content: center;
+	align-items: center;
+	gap: $spacing-base;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	padding: $spacing-base 0;
+	margin: 0 auto;
+}
+
+.pokemon {
+	&-card {
+		width: 100%;
+		height: 22.5rem;
+		box-shadow: 0 $spacing-sm $spacing-xxl 0 rgba(31, 38, 135, 0.17);
+		backdrop-filter: blur($spacing-xxs);
+		-webkit-backdrop-filter: blur($spacing-xxs);
+
+		&-header,
+		&-footer {
+			border: none;
+			background-color: transparent;
+			text-align: center;
+		}
+
+		&-footer {
+			padding-bottom: 5%;
+		}
+
+		&-img {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+
+			img {
+				width: 50%;
+			}
+		}
+		&-grass {
+			border-color: #1cd80ea8;
+			background-color: #1cd80ea8;
+		}
+		&-fire {
+			border-color: #ff6b0db7;
+			background-color: #ff6a0db7;
+		}
+		&-water {
+			border-color: #3e5a9db0;
+			background-color: #3e5b9db0;
+		}
+		&-bug {
+			border-color: #7bcf00;
+			background-color: #7ccf00a6;
+		}
+		&-normal {
+			border-color: $whitesmoke;
+			background-color: $whitesmoke;
+		}
+		&-poison {
+			border-color: #a33ea194;
+			background-color: #a33ea194;
+		}
+		&-electric {
+			border-color: #ffde00c4;
+			background-color: #ffdd00c4;
+		}
+		&-ground {
+			border-color: #e2bf65be;
+			background-color: #e2bf65bd;
+		}
+		&-fairy {
+			border-color: #ff76ff9d;
+			background-color: #ff76ff9d;
+		}
+		&-fighting {
+			border-color: #ff6c64c0;
+			background-color: #ff6c64c0;
+		}
+		&-psychic {
+			border-color: #f366b89d;
+			background-color: #f366b89d;
+		}
+		&-fighting {
+			border-color: #d567249d;
+			background-color: #d567249d;
+		}
+		&-rock {
+			border-color: #a48c219d;
+			background-color: #a48c219d;
+		}
+		&-ghost {
+			border-color: #7c62a39d;
+			background-color: #7c62a39d;
+		}
+		&-ice {
+			border-color: #89bdff9d;
+			background-color: #89bdff9d;
+		}
+		&-dragon {
+			border-color: #0076ff9d;
+			background-color: #0076ff9d;
+		}
+	}
+	&-name {
+		font-size: $font-size-xl;
+		font-weight: $nunito-bold;
+		padding: $spacing-xxs 0;
+		text-transform: capitalize;
+	}
+	&-types-row {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: $spacing-xxs;
+		width: 100%;
+	}
+	&-type {
+		padding: $spacing-xxs $spacing-base;
+		box-shadow: 0 $spacing-sm $spacing-xxl 0 rgba(31, 38, 135, 0.17);
+		border-radius: $spacing-sm;
+		backdrop-filter: blur($spacing-xxs);
+		-webkit-backdrop-filter: blur($spacing-xxs);
+		text-transform: uppercase;
+		font-weight: $nunito-bold;
+
+		&-grass {
+			border-color: #1cd80ea8;
+			background-color: #1cd80ea8;
+		}
+		&-fire {
+			border-color: #ff6b0db7;
+			background-color: #ff6a0db7;
+		}
+		&-water {
+			border-color: #3e5a9db0;
+			background-color: #3e5b9db0;
+		}
+		&-bug {
+			border-color: #7bcf00;
+			background-color: #7ccf00a6;
+		}
+		&-normal {
+			border-color: $whitesmoke;
+			background-color: $whitesmoke;
+		}
+		&-poison {
+			border-color: #a33ea194;
+			background-color: #a33ea194;
+		}
+		&-electric {
+			border-color: #ffde00c4;
+			background-color: #ffdd00c4;
+		}
+		&-ground {
+			border-color: #e2bf65be;
+			background-color: #e2bf65bd;
+		}
+		&-fairy {
+			border-color: #ff76ff9d;
+			background-color: #ff76ff9d;
+		}
+		&-fighting {
+			border-color: #ff6c64c0;
+			background-color: #ff6c64c0;
+		}
+		&-psychic {
+			border-color: #f366b89d;
+			background-color: #f366b89d;
+		}
+		&-fighting {
+			border-color: #d567249d;
+			background-color: #d567249d;
+		}
+		&-rock {
+			border-color: #a48c219d;
+			background-color: #a48c219d;
+		}
+		&-ghost {
+			border-color: #7c62a39d;
+			background-color: #7c62a39d;
+		}
+		&-ice {
+			border-color: #89bdff9d;
+			background-color: #89bdff9d;
+		}
+		&-dragon {
+			border-color: #0076ff9d;
+			background-color: #0076ff9d;
+		}
+	}
+}
