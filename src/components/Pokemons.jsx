@@ -1,14 +1,36 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getPokemons } from '../store/actions/pokemons';
+import {
+	getPokemons,
+	sortPokemonsByName,
+	sortPokemonsById,
+} from '../store/actions/pokemons';
 import PokemonCard from './PokemonCard';
 
 const Pokemons = (props) => {
-	const { pokemons, getPokemons } = props;
+	const {
+		pokemons,
+		getPokemons,
+		sortOption,
+		sortPokemonsByName,
+		sortPokemonsById,
+	} = props;
 
 	useEffect(() => {
 		getPokemons();
 	}, [getPokemons]);
+
+	useEffect(() => {
+		if (sortOption) {
+			sortPokemonsByName(sortOption);
+		}
+	}, [sortPokemonsByName, sortOption]);
+
+	useEffect(() => {
+		if (sortOption) {
+			sortPokemonsById(sortOption);
+		}
+	}, [sortPokemonsById, sortOption]);
 
 	console.log(pokemons);
 	return (
@@ -31,6 +53,11 @@ const Pokemons = (props) => {
 
 const mapStateToProps = (state) => ({
 	pokemons: state.pokemons.pokemons.length > 0 && state.pokemons.pokemons,
+	sortOption: state.pokemons.sortOption,
 });
 
-export default connect(mapStateToProps, { getPokemons })(Pokemons);
+export default connect(mapStateToProps, {
+	getPokemons,
+	sortPokemonsByName,
+	sortPokemonsById,
+})(Pokemons);

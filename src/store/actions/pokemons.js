@@ -7,6 +7,8 @@ import {
 	SEARCH_POKEMONS,
 	SET_SEARCH_TERM,
 	SET_SORT_OPTION,
+	SORT_POKEMONS_BY_ID,
+	SORT_POKEMONS_BY_NAME,
 } from './actionTypes';
 
 export const getPokemons = () => async (dispatch) => {
@@ -41,4 +43,50 @@ export const searchPokemons = (searchTerm) => (dispatch, getState) => {
 
 export const setSortOption = (sortOption) => (dispatch) => {
 	dispatch({ type: SET_SORT_OPTION, sortOption: sortOption });
+};
+
+export const sortPokemonsByName = (sortOption) => (dispatch, getState) => {
+	const sortPokemonsOptions = getState().pokemons.sortOptions;
+	let pokemons = getState().pokemons.pokemons;
+
+	if (!sortOption) {
+		getPokemons();
+	} else {
+		if (sortOption === sortPokemonsOptions[0]) {
+			getPokemons();
+		} else if (sortOption === sortPokemonsOptions[3]) {
+			pokemons = [...pokemons].sort((a, b) => (a.name > b.name ? 1 : -1));
+		} else if (sortOption === sortPokemonsOptions[4]) {
+			pokemons = [...pokemons].sort((a, b) => (b.name > a.name ? 1 : -1));
+		}
+
+		dispatch({
+			type: SORT_POKEMONS_BY_NAME,
+			pokemons: pokemons.length > 0 && pokemons,
+			sortOption: sortOption,
+		});
+	}
+};
+
+export const sortPokemonsById = (sortOption) => (dispatch, getState) => {
+	const sortPokemonsOptions = getState().pokemons.sortOptions;
+	let pokemons = getState().pokemons.pokemons;
+
+	if (!sortOption) {
+		getPokemons();
+	} else {
+		if (sortOption === sortPokemonsOptions[0]) {
+			getPokemons();
+		} else if (sortOption === sortPokemonsOptions[1]) {
+			pokemons = [...pokemons].sort((a, b) => (a.id > b.id ? 1 : -1));
+		} else if (sortOption === sortPokemonsOptions[2]) {
+			pokemons = [...pokemons].sort((a, b) => (b.id > a.id ? 1 : -1));
+		}
+
+		dispatch({
+			type: SORT_POKEMONS_BY_ID,
+			pokemons: pokemons.length > 0 && pokemons,
+			sortOption: sortOption,
+		});
+	}
 };

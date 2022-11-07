@@ -6,6 +6,8 @@ import {
 	SEARCH_POKEMONS,
 	SET_SEARCH_TERM,
 	SET_SORT_OPTION,
+	SORT_POKEMONS_BY_ID,
+	SORT_POKEMONS_BY_NAME,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -42,6 +44,18 @@ const pokemons = (state = initialState, action) => {
 			};
 		case SET_SORT_OPTION:
 			return { ...state, sortOption: action.sortOption };
+		case SORT_POKEMONS_BY_NAME:
+			return {
+				...state,
+				pokemons: action.pokemons,
+				sortOption: action.sortOption,
+			};
+		case SORT_POKEMONS_BY_ID:
+			return {
+				...state,
+				pokemons: action.pokemons,
+				sortOption: action.sortOption,
+			};
 		case LOADING_POKEMONS:
 			return { ...state, loadingPokemons: true };
 		default:
