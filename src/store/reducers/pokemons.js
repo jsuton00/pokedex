@@ -1,5 +1,6 @@
 import { SORT_OPTIONS } from '../../constants/options';
 import {
+	FETCH_POKEMON,
 	FETCH_POKEMONS_FAIL,
 	FETCH_POKEMONS_SUCCESS,
 	LOADING_POKEMONS,
@@ -13,6 +14,7 @@ import {
 const initialState = {
 	pokemons: [],
 	pokemon: '',
+	pokemonId: '',
 	searchTerm: '',
 	sortOption: '',
 	sortOptions: SORT_OPTIONS,
@@ -34,6 +36,8 @@ const pokemons = (state = initialState, action) => {
 				loadingPokemons: false,
 				errorPokemons: true,
 			};
+		case FETCH_POKEMON:
+			return { ...state, pokemon: action.pokemon, pokemonId: action.pokemonId };
 		case SET_SEARCH_TERM:
 			return { ...state, searchTerm: action.searchTerm };
 		case SEARCH_POKEMONS:

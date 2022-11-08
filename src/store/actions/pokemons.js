@@ -1,6 +1,7 @@
 import { fetchPokemons } from '../../apis/api';
 import { searchArray } from '../../utils/arrayUtils';
 import {
+	FETCH_POKEMON,
 	FETCH_POKEMONS_FAIL,
 	FETCH_POKEMONS_SUCCESS,
 	LOADING_POKEMONS,
@@ -89,4 +90,14 @@ export const sortPokemonsById = (sortOption) => (dispatch, getState) => {
 			sortOption: sortOption,
 		});
 	}
+};
+
+export const fetchPokemon = (pokemonId) => (dispatch, getState) => {
+	const pokemons = getState().pokemons.pokemons;
+	let pokemon;
+	if (pokemonId) {
+		pokemon = pokemons.length > 0 && pokemons.find((p) => p.id === pokemonId);
+	}
+
+	dispatch({ type: FETCH_POKEMON, pokemon: pokemon ? pokemon : '', pokemonId });
 };

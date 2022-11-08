@@ -19,6 +19,7 @@
 		box-shadow: 0 $spacing-sm $spacing-xxl 0 rgba(31, 38, 135, 0.17);
 		backdrop-filter: blur($spacing-xxs);
 		-webkit-backdrop-filter: blur($spacing-xxs);
+		cursor: pointer;
 
 		&-header,
 		&-footer {
