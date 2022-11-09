@@ -5,8 +5,11 @@ import {
 	getPokemons,
 	sortPokemonsByName,
 	sortPokemonsById,
-	fetchPokemon,
+	getPokemon,
+	fetchPokemonSpecie,
 } from '../store/actions/pokemons';
+import ErrorMessage from './ErrorMessage';
+import Loader from './Loader';
 import Pagination from './Pagination';
 import PokemonCard from './PokemonCard';
 
@@ -17,7 +20,10 @@ const Pokemons = (props) => {
 		sortOption,
 		sortPokemonsByName,
 		sortPokemonsById,
-		fetchPokemon,
+		getPokemon,
+		fetchPokemonSpecie,
+		loadingPokemons,
+		errorPokemons,
 	} = props;
 
 	const [currentPage, setCurrentPage] = useState(1);
@@ -53,10 +59,13 @@ const Pokemons = (props) => {
 
 	const goToPokemon = (id) => {
 		navigate({ pathname: `/pokemon/:${id}` });
-		fetchPokemon(id);
+		getPokemon(id);
+		fetchPokemonSpecie(id);
 	};
 	return (
 		<>
+			{loadingPokemons && <Loader />}
+			{errorPokemons && <ErrorMessage />}
 			<div className="pokemons">
 				{currentPokemons.length > 0 &&
 					currentPokemons.map((pokemon) => {
@@ -84,11 +93,14 @@ const Pokemons = (props) => {
 const mapStateToProps = (state) => ({
 	pokemons: state.pokemons.pokemons.length > 0 && state.pokemons.pokemons,
 	sortOption: state.pokemons.sortOption,
+	loadingPokemons: state.pokemons.loadingPokemons,
+	errorPokemons: state.pokemons.errorPokemons,
 });
 
 export default connect(mapStateToProps, {
 	getPokemons,
 	sortPokemonsByName,
 	sortPokemonsById,
-	fetchPokemon,
+	getPokemon,
+	fetchPokemonSpecie,
 })(Pokemons);

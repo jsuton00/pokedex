@@ -11,6 +11,9 @@
 @import './components/pokemons';
 @import './components/sort';
 @import './components/pagination';
+@import './components/loader';
+@import './components/pokemon-details';
 
 //Pages
 @import './pages/home-page';
+@import './pages/pokemon-details-page';

@@ -12,7 +12,6 @@ const SearchBar = (props) => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-
 		searchPokemons(searchTerm);
 	};
 	return (

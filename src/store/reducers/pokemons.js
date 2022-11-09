@@ -3,6 +3,8 @@ import {
 	FETCH_POKEMON,
 	FETCH_POKEMONS_FAIL,
 	FETCH_POKEMONS_SUCCESS,
+	FETCH_POKEMON_SPECIE_FAIL,
+	FETCH_POKEMON_SPECIE_SUCCESS,
 	LOADING_POKEMONS,
 	SEARCH_POKEMONS,
 	SET_SEARCH_TERM,
@@ -14,6 +16,7 @@ import {
 const initialState = {
 	pokemons: [],
 	pokemon: '',
+	pokemonSpecie: '',
 	pokemonId: '',
 	searchTerm: '',
 	sortOption: '',
@@ -30,6 +33,7 @@ const pokemons = (state = initialState, action) => {
 				pokemons: action.pokemons.length > 0 && action.pokemons,
 				loadingPokemons: false,
 			};
+		case FETCH_POKEMON_SPECIE_FAIL:
 		case FETCH_POKEMONS_FAIL:
 			return {
 				...state,
@@ -38,6 +42,12 @@ const pokemons = (state = initialState, action) => {
 			};
 		case FETCH_POKEMON:
 			return { ...state, pokemon: action.pokemon, pokemonId: action.pokemonId };
+		case FETCH_POKEMON_SPECIE_SUCCESS:
+			return {
+				...state,
+				pokemonSpecie: action.pokemonSpecie,
+				pokemonId: action.pokemonId,
+			};
 		case SET_SEARCH_TERM:
 			return { ...state, searchTerm: action.searchTerm };
 		case SEARCH_POKEMONS:

@@ -26,7 +26,11 @@ const Sort = (props) => {
 					{SORT_OPTIONS.length > 0 &&
 						SORT_OPTIONS.map((option) => {
 							return (
-								<option key={option} value={option}>
+								<option
+									key={option}
+									value={option}
+									className="sort-select-option"
+								>
 									{option}
 								</option>
 							);

@@ -13,3 +13,11 @@ export const fetchPokemons = async () => {
 
 	return pokemons;
 };
+
+export const fetchPokemon = async (id) => {
+	return await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+};
+
+export const fetchPokemonEvolution = async (url) => {
+	return await axios.get(url);
+};

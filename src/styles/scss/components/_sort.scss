@@ -29,5 +29,10 @@
 	&-select {
 		padding: $spacing-xxs $spacing-base;
 		border-radius: $spacing-sm;
+		text-transform: capitalize;
+
+		&-option {
+			text-transform: capitalize;
+		}
 	}
 }

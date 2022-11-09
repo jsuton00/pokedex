@@ -1,9 +1,11 @@
-import { fetchPokemons } from '../../apis/api';
+import { fetchPokemon, fetchPokemons } from '../../apis/api';
 import { searchArray } from '../../utils/arrayUtils';
 import {
 	FETCH_POKEMON,
 	FETCH_POKEMONS_FAIL,
 	FETCH_POKEMONS_SUCCESS,
+	FETCH_POKEMON_SPECIE_FAIL,
+	FETCH_POKEMON_SPECIE_SUCCESS,
 	LOADING_POKEMONS,
 	SEARCH_POKEMONS,
 	SET_SEARCH_TERM,
@@ -31,15 +33,17 @@ export const searchPokemons = (searchTerm) => (dispatch, getState) => {
 	let pokemons = getState().pokemons.pokemons;
 	let searchResults;
 
-	if (searchTerm && searchTerm.length > 0) {
+	if (searchTerm) {
 		searchResults = searchArray(pokemons, searchTerm);
-	}
 
-	dispatch({
-		type: SEARCH_POKEMONS,
-		pokemons: searchResults.length > 0 && searchResults,
-		searchTerm: searchTerm,
-	});
+		dispatch({
+			type: SEARCH_POKEMONS,
+			pokemons: searchResults.length > 0 && searchResults,
+			searchTerm: searchTerm,
+		});
+	} else {
+		getPokemons();
+	}
 };
 
 export const setSortOption = (sortOption) => (dispatch) => {
@@ -92,7 +96,7 @@ export const sortPokemonsById = (sortOption) => (dispatch, getState) => {
 	}
 };
 
-export const fetchPokemon = (pokemonId) => (dispatch, getState) => {
+export const getPokemon = (pokemonId) => (dispatch, getState) => {
 	const pokemons = getState().pokemons.pokemons;
 	let pokemon;
 	if (pokemonId) {
@@ -100,4 +104,24 @@ export const fetchPokemon = (pokemonId) => (dispatch, getState) => {
 	}
 
 	dispatch({ type: FETCH_POKEMON, pokemon: pokemon ? pokemon : '', pokemonId });
+};
+
+export const fetchPokemonSpecie = (pokemonId) => async (dispatch) => {
+	try {
+		dispatch({ type: LOADING_POKEMONS });
+		let response;
+
+		if (pokemonId) {
+			response = await fetchPokemon(pokemonId);
+		}
+
+		dispatch({
+			type: FETCH_POKEMON_SPECIE_SUCCESS,
+			pokemonSpecie: response.data,
+			pokemonId: pokemonId,
+		});
+	} catch (err) {
+		console.log(err);
+		dispatch({ type: FETCH_POKEMON_SPECIE_FAIL });
+	}
 };
